@@ -71,6 +71,7 @@ The tables below show the results obtained by each tested CNN architecture:
 |               | ResNet-50       | 0.92         | 0.92	         | 0.85         | 0.97     |
 |               | LytNetV2        | 0.95         | 0.92	         | 0.87         | **0.98** |
 
+**CP denotes the crosswalk presence indication variable**
 
 | **CNN Model**   | **Start point error** | **Endpoint error** |
 | :---:           | :---:                 | :---:              |
