@@ -18,19 +18,19 @@ To achieve the goal of adding a decent quantity of images from various locations
 
 To use this dataset, you must perform the following steps:
 1. Download and extract its four parts, shown in table 1. For the PedestrianLights dataset, only the following folder needs extraction: *pedestrianlights/download/pedestrianlights_large.zip*;
-2. Execute the code "CropPedestrianLights.py", informing the path to the original images and annotations of the *PedestrianLights* dataset, by author Jan Roters. This code performs a random crop in each image, as the original has a much different aspect ratio from the ones of other datasets;
+2. Execute the code "CropPedestrianLights.py", informing the path to the original images and annotations of the PedestrianLights dataset, by author Jan Roters. This code performs a random crop in each image, as the original has a much different aspect ratio from the ones of other datasets;
 3. Organize the extracted parts as follows:
 
 ![alt text](https://github.com/ronaldosm/LightsAndCrosswalkDetect/blob/master/Figures/dataset_structure.png?raw=true)
 
 Annotations of the resulting dataset are composed of the following parts:
 
-* image_file: Path to the referred image;
-* Coordinates: (X, Y) coordinates, comprised between 0 and 1, of the start point and the endpoint of the midline of the crosswalk. In the cases where there is no crosswalk in the image, the coordinates are an array of zeros;
-* IScrosswalk: Equal to 1 if the image contains a crosswalk, and 0 otherwise;
-* light_class: PTL class indicator. 0 correspond to red PTL, 1 to green PTL, and 2 to nonexistent PTL.
+* **image_file:** Path to the referred image;
+* **Coordinates:** (X, Y) coordinates, comprised between 0 and 1, of the start point and the endpoint of the midline of the crosswalk. In the cases where there is no crosswalk in the image, the coordinates are an array of zeros;
+* **IScrosswalk:** Equal to 1 if the image contains a crosswalk, and 0 otherwise;
+* **light_class:** PTL class indicator. 0 correspond to red PTL, 1 to green PTL, and 2 to nonexistent PTL.
 
-Tables 2 and 3 contains statistics about this dataset:
+The next tables contains statistics about this dataset:
 
 |          | Images with crosswalks| Images without crosswalks |
 | ---      | ---                   | ---                       |
@@ -42,7 +42,7 @@ Tables 2 and 3 contains statistics about this dataset:
 | Training | 532 (25.66%) | 702 (33.86%) | 839 (40.48%) |
 | Testing  | 339 (22.71%) | 722 (48.36%) | 432 (28.93%) |
 
-To further increase the CNNs performance for PTL class identification, we also used the PTL dataset from Yu; Lee; Kim (Link). For this specific dataset, since the image labels in this dataset contain all the necessary information for training, it was not required to redo them. However, as our CNNs outputs have only three classes, our code automatically merges the following ones: green and countdown green, and red and countdown blank. Table 4 contains statistics about the union of ours and this dataset:
+To further increase the CNNs performance for PTL class identification, we also used the PTL dataset from Yu; Lee; Kim [(Link)](https://github.com/samuelyu2002/ImVisible). For this specific dataset, since the image labels in this dataset contain all the necessary information for training, it was not required to redo them. However, as our CNNs outputs have only three classes, our code automatically merges the following ones: **green** and **countdown green**, and **red** and **countdown blank**. The table below contains statistics about the union of ours and this dataset:
 
 |          | Green PTL     | Red PTL       | No PTL        |
 | ---      | ---           | ---           | ---           |
