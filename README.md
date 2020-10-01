@@ -13,20 +13,23 @@ To achieve the goal of adding a decent quantity of images from various locations
 | PTLR Dataset             | Ruiqi Cheng | China, Italy | 1135 | 1106 | [Link](http://wangkaiwei.org/downloadeg.html) |
 | PedestrianLights - Large | Jan Roters  | Germany      | 501  | 501  | [Link](https://www.uni-muenster.de/PRIA/en/forschung/index.shtml) |
 | Complementary Dataset    | Ours        | Brazil       | 1215 | 1215 | [Link]() |
+
  **TD denotes the total number of images in its original dataset, and TU the number of images that we appended to make ours**
 
 To use this dataset, you must perform the following steps:
-Download and extract its four parts, shown in table 1. For the PedestrianLights dataset, only the following folder needs extraction: *pedestrianlights/download/pedestrianlights_large.zip*;
-Execute the code "CropPedestrianLights.py", informing the path to the original images and annotations of the *PedestrianLights* dataset, by author Jan Roters. This code performs a random crop in each image, as the original has a much different aspect ratio from the ones of other datasets;
-Organize the extracted parts as follows:
+1. Download and extract its four parts, shown in table 1. For the PedestrianLights dataset, only the following folder needs extraction: *pedestrianlights/download/pedestrianlights_large.zip*;
+2. Execute the code "CropPedestrianLights.py", informing the path to the original images and annotations of the *PedestrianLights* dataset, by author Jan Roters. This code performs a random crop in each image, as the original has a much different aspect ratio from the ones of other datasets;
+3. Organize the extracted parts as follows:
 
 ![alt text](https://github.com/ronaldosm/LightsAndCrosswalkDetect/blob/master/Figures/dataset_structure.png?raw=true)
 
 Annotations of the resulting dataset are composed of the following parts:
-image_file: Path to the referred image;
-Coordinates: (X, Y) coordinates, comprised between 0 and 1, of the start point and the endpoint of the midline of the crosswalk. In the cases where there is no crosswalk in the image, the coordinates are an array of zeros;
-IScrosswalk: Equal to 1 if the image contains a crosswalk, and 0 otherwise;
-light_class: PTL class indicator. 0 correspond to red PTL, 1 to green PTL, and 2 to nonexistent PTL.
+
+* image_file: Path to the referred image;
+* Coordinates: (X, Y) coordinates, comprised between 0 and 1, of the start point and the endpoint of the midline of the crosswalk. In the cases where there is no crosswalk in the image, the coordinates are an array of zeros;
+* IScrosswalk: Equal to 1 if the image contains a crosswalk, and 0 otherwise;
+* light_class: PTL class indicator. 0 correspond to red PTL, 1 to green PTL, and 2 to nonexistent PTL.
+
 Tables 2 and 3 contains statistics about this dataset:
 
 |          | Images with crosswalks| Images without crosswalks |
