@@ -1,4 +1,4 @@
-# Crosswalks And Pedestrian Triffic Lights Identification
+# Crosswalks And Pedestrian Traffic Lights Identification
 
 ### Introduction
 This repository hosts project that aims to develop software for real-time pedestrian traffic lights (PTLs) and zebra crosswalks identification with application in an autonomous wheelchair prototype.
