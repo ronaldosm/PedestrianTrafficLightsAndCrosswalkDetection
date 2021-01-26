@@ -15,6 +15,9 @@ def find_angle_from_coord(coordinates_list,IScrosswalk_list):
 
 
 def find_crosswalk_len(coordinates_list,IScrosswalk_list):
+    """
+    Find the crosswalk length. Inputs: List of crosswalk coordinates, List of crosswalk coordinates considered (IScrosswalk variable)
+    """
     len_arr = []
     for coordinates,IScrw in zip(coordinates_list,IScrosswalk_list):
         if IScrw: len_arr.append(float(((coordinates[3]-coordinates[1])**2+(coordinates[0]-coordinates[2])**2)**(1/2)))
@@ -22,6 +25,9 @@ def find_crosswalk_len(coordinates_list,IScrosswalk_list):
 
 
 def mean_distance(Mcoord,Tcoord,Tcrw):
+    """
+    Find the mean distance and STD between the predicted and ground-truth coordinates. Inputs: Model coordinates, Ground-truth coordinates, list of coordinates considered (IScrosswalk variable); Outputs: Start-point mean distance, Start-point STD, Endpoint mean distance, Endpoint STD
+    """
     start_vec,end_vec = [],[]
     for [Mx1,My1,Mx2,My2],[Tx1,Ty1,Tx2,Ty2],IScrw in zip(Mcoord,Tcoord,Tcrw):
         if IScrw != 0:
@@ -38,6 +44,9 @@ def mean_distance(Mcoord,Tcoord,Tcrw):
 
 
 def confusion_matrix(model_classes,true_classes,n_classes):
+    """
+    Create a confusion matrix. Inputs: Model classes, Ground-truth classes, number of classes
+    """
     assert n_classes >= 2, 'At least 2 classes are needed'
     M = torch.FloatTensor([[0]*n_classes]*n_classes)
     for Mc,Tc in zip(model_classes,true_classes): M[int(Tc)][round(float(Mc))] += 1
@@ -45,11 +54,17 @@ def confusion_matrix(model_classes,true_classes,n_classes):
 
 
 def class_accuracy(confusion_matrix):
+    """
+    Calculate the accuracy for one classification task (PTL or crosswalk presence). Inputs: Confusion matrix
+    """
     correct_pred = sum(confusion_matrix[i][i] for i in range(len(confusion_matrix)))
     return correct_pred/sum(sum(x) for x in confusion_matrix)
 
 
 def overall_accuracy(Mi,Ti,Ml,Tl):
+    """
+    Calculate the multi-class accuracy (PTL and crosswalk presence). Inputs: Model IScrosswalk, Ground-truth IScrosswalk, Model Light-class, Ground-truth Light-class
+    """
     correct_pred = 0
     for mi,ti,ml,tl in zip(Mi,Ti,Ml,Tl):
         if round(float(mi)) == int(ti) and round(float(ml)) == int(tl): correct_pred += 1
@@ -57,6 +72,9 @@ def overall_accuracy(Mi,Ti,Ml,Tl):
 
 
 def precision_recall(confusion_matrix):
+    """
+    Calculate the precision and recall for one classification task (PTL or crosswalk presence). Inputs: Confusion matrix
+    """
     precision = []
     recall = []
     for i in range(len(confusion_matrix)):

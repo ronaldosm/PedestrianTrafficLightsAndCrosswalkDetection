@@ -20,51 +20,49 @@ import MixNet
 # Parameters
 batch_size = 8
 images_size = [768,576]
-models_list = {'ResNet' : 0, # 1 -> Use this model, 0 -> Don't use it
-               'MixNet' : 0,
+models_list = {'ResNet' : 1, # 1 -> Use this model, 0 -> Don't use it
                'LytNet' : 1,
                'EffNet2': 1,
-               'EffNet1': 0,
-               'EffNet0': 0
+               'EffNet1': 1,
+               'EffNet0': 1
                }
 
 # Paths
-PTL_train_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL_Dataset/PTLR_training.csv'   # Lytnet Dataset Training Annotations
-PTL_train_img_path = home_dir + 'Path to: /Datasets/Images/PTL_Dataset_876x657/'                 # Lytnet Dataset Training Images
+PTL_train_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL Dataset/PTLR_training.csv'                    # Lytnet Dataset Training Annotations
+PTL_train_img_path = home_dir + 'Path to: /Datasets/Images/PTL_Dataset_876x657/'                                  # Lytnet Dataset Training Images
 
-Sec_train_ann_path = home_dir + 'Path to: /Datasets/Annotations/second_dataset/training.csv'     # Second Dataset Training Annotaions
-Sec_train_img_path = home_dir + 'Path to: /Datasets/Images/second_dataset/'                      # Second Dataset Training Images
+PTL_valid_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL_Dataset/PTLR_validation.csv'                  # Lytnet Dataset Validation Annotations
+PTL_valid_img_path = home_dir + 'Path to: /Datasets/Images/PTL_Dataset_768x576/'                                  # Lytnet Dataset Validation Images
 
-PTL_valid_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL_Dataset/PTLR_validation.csv' # Lytnet Dataset Validation Annotations
-PTL_valid_img_path = home_dir + 'Path to: /Datasets/Images/PTL_Dataset_768x576/'                 # Lytnet Dataset Validation Images
+PTL_tests_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL_Dataset/testing_file.csv'                     # Lytnet Dataset Testing Annotations
+PTL_tests_img_path = home_dir + 'Path to: /Datasets/Images/PTL_Dataset_768x576/'                                  # Lytnet Dataset Testing Images
 
-Sec_valid_ann_path = home_dir + 'Path to: /Datasets/Annotations/second_Dataset/testing.csv'      # Second Dataset Validation Annotaions
-Sec_valid_img_path = home_dir + 'Path to: /Datasets/Images/second_dataset/'                      # Second Dataset Validation Images
+PTL_Crosswalk_img_path = home_dir + 'Path to: /Datasets/Images/PTL-Crosswalk Dataset/'                            # PTL-Crosswalk Dataset Images
 
-PTL_tests_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL_Dataset/testing_file.csv'    # Lytnet Dataset Testing Annotations
-PTL_tests_img_path = home_dir + 'Path to: /Datasets/Images/PTL_Dataset_768x576/'                 # Lytnet Dataset Testing Images
+PTL_Crosswalk_train_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL-Crosswalk Dataset/training.csv'     # PTL-Crosswalk Dataset Training Annotaions
+PTL_Crosswalk_valid_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL-Crosswalk Dataset/validation.csv'   # PTL-Crosswalk Dataset Validation Annotaions
+PTL_Crosswalk_tests_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL-Crosswalk Dataset/testing.csv'      # PTL-Crosswalk Dataset Testing Annotaions
 
-ResNet_StateDict  = 'Path to: /Codes/CNNs/ResNet/my_model.pth'          # ResNet 50 state-dict path
-MixNet_StateDict  = 'Path to: /Codes/CNNs/MixNet/my_model.pth'          # MixNet state-dict path
-LytNet_StateDict  = 'Path to: /Codes/CNNs/LytNetV2/my_model.pth'        # LytnetV2 state-dict path
-EffNet0_StateDict = 'Path to: /Codes/CNNs/EfficientNet/B0/my_model.pth' # EfficientNet B0 state-dict path
-EffNet1_StateDict = 'Path to: /Codes/CNNs/EfficientNet/B1/my_model.pth' # EfficientNet B1 state-dict path
-EffNet2_StateDict = 'Path to: /Codes/CNNs/EfficientNet/B2/my_model.pth' # EfficientNet B2 state-dict path
+ResNet_StateDict  = 'Path to: /Codes/CNNs/ResNet/my_model.pth'          # ResNet50-M state-dict path
+LytNet_StateDict  = 'Path to: /Codes/CNNs/LytNetV2/my_model.pth'        # LytnetV2-M state-dict path
+EffNet0_StateDict = 'Path to: /Codes/CNNs/EfficientNet/B0/my_model.pth' # EfficientNet-M B0 state-dict path
+EffNet1_StateDict = 'Path to: /Codes/CNNs/EfficientNet/B1/my_model.pth' # EfficientNet-M B1 state-dict path
+EffNet2_StateDict = 'Path to: /Codes/CNNs/EfficientNet/B2/my_model.pth' # EfficientNet-M B2 state-dict path
 
 # --------------------------------- Facilitate dataset choice ---------------------------------
-dataset_dict = {'train':{'PTL':{'img_path':PTL_train_img_path,'ann_path':PTL_train_ann_path},
-                      'second':{'img_path':Sec_train_img_path,'ann_path':Sec_train_ann_path}},
-                'valid':{'PTL':{'img_path':PTL_valid_img_path,'ann_path':PTL_valid_ann_path},
-                      'second':{'img_path':Sec_valid_img_path,'ann_path':Sec_valid_ann_path}},
-                'tests':{'PTL':{'img_path':PTL_tests_img_path,'ann_path':PTL_tests_ann_path},
-                      'second':{'img_path':Sec_valid_img_path,'ann_path':Sec_valid_ann_path}}}
+dataset_dict = {'train':{'PTL':{'img_path':PTL_train_img_path,    'ann_path':PTL_train_ann_path},
+               'PTL-Crosswalk':{'img_path':PTL_Crosswalk_img_path,'ann_path':PTL_Crosswalk_train_ann_path}},
+                'valid':{'PTL':{'img_path':PTL_valid_img_path,    'ann_path':PTL_valid_ann_path},
+               'PTL-Crosswalk':{'img_path':PTL_Crosswalk_img_path,'ann_path':PTL_Crosswalk_valid_ann_path}},
+                'tests':{'PTL':{'img_path':PTL_tests_img_path,    'ann_path':PTL_tests_ann_path},
+               'PTL-Crosswalk':{'img_path':PTL_Crosswalk_img_path,'ann_path':PTL_Crosswalk_valid_ann_path}}}
 
 def get_dataset_array(Type,Sources):
     global dataset_dict
     img_path_arr = []
     ann_path_arr = []
 
-    Sources = [Sources] if Sources != 'complete' else ['PTL','second']
+    Sources = [Sources] if Sources != 'complete' else ['PTL','PTL-Crosswalk']
 
     for dataset_source in Sources:
         img_path_arr.append(dataset_dict[Type][dataset_source]['img_path'])
@@ -80,7 +78,7 @@ if __name__ == '__main__':
     dataloader = torch.utils.data.DataLoader(Dataset,batch_size=batch_size,shuffle=False, num_workers=0)
 
     # Models and state-dicts
-    ResNet, Mixnet, LytNet,EffNet0,EffNet1,EffNet2 = [None,None,None,None,None,None]
+    ResNet, LytNet,EffNet0,EffNet1,EffNet2 = [None,None,None,None,None]
     using_models, names = [],[]
     if models_list['EffNet2']:
         EffNet2 = EfficientNet.MakeModel('efficientnet_b2').cuda()
@@ -107,11 +105,6 @@ if __name__ == '__main__':
         ResNet.load_state_dict(torch.load(ResNet_StateDict))
         using_models.append(ResNet.eval())
         names.append('ResNet 50')
-    if models_list['MixNet']:
-        Mixnet = MixNet.MakeModel().cuda()
-        Mixnet.load_state_dict(torch.load(MixNet_StateDict))
-        using_models.append(Mixnet.eval())
-        names.append('MixNet')
 
     # Measures
     Mi = {} # Model IScrosswalk variable
@@ -142,7 +135,7 @@ if __name__ == '__main__':
             for N,model in enumerate(using_models,0):
                 # Outputs
                 outputs = model(images)
-                output_coordinates = outputs['coordinates'].cpu() 
+                output_coordinates = outputs['coordinates'].cpu()
                 output_coordinates = [[min(max(0,float(val)),1) for val in array] for array in output_coordinates] # Restricts coordinates values between 0 and 1
                 output_IScrosswalk = outputs['IScrosswalk'].cpu().squeeze()
                 output_light_class = [torch.argmax(item) for item in outputs['light_class'].cpu()]

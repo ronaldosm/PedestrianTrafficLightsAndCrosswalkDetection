@@ -23,7 +23,7 @@ def make_annotations(images_path,annotations_path,dataset_types):
                 else: pass
                 annotations_list.append([img_path,coordinates,light_class,1])
 
-        elif DTtype == 'second':
+        elif DTtype == 'PTL-Crosswalk':
             for _,line in csv_file.iterrows():
                 img_path = IMGpath+line['image_file']
                 coordinates = line['coordinates'].replace('[','').replace(']','').split(',')
@@ -45,7 +45,7 @@ class make(torch.utils.data.Dataset):
     dataset_types: PTL -> original dataset of LytNet CNN. second -> secondary dataset composed of images with and without crosswalk
     transformation: [probability of 50%] -> gaussian blur, change of brightness, contrast and saturation
     """
-    def __init__(self,images_path, annotations_path, output_size=[768,768], dataset_types='lytnet', transformation=True):
+    def __init__(self,images_path, annotations_path, output_size=[768,576], dataset_types='PTL-Crosswalk', transformation=True):
         self.transformation = transformation
         self.output_size = output_size
         self.annotations_list = make_annotations(images_path,annotations_path,dataset_types)

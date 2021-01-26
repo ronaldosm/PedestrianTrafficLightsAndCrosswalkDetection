@@ -19,7 +19,7 @@ original_ann = [[int(item) for item in List] for List in original_ann]
 for i,item in enumerate(glob.glob(images_dir+'*.jpg'),0):
     name = item.split('/')[-1:][0].split('.')[0]
     y_candidates = [ann for ann in original_ann if int(name) == ann[0]]
-    if y_candidates == []: 
+    if y_candidates == []:
         light_y_coord = 160
     else:
         flag = 0
@@ -29,11 +29,11 @@ for i,item in enumerate(glob.glob(images_dir+'*.jpg'),0):
                 flag = 1
         if not flag:
             light_y_coord = y_candidates[0][1]
-    
+
     if light_y_coord>160: light_y_coord = 160
     y1 = random.randint(0,light_y_coord)
     y2 = y1+480
-    
+
     box = (0,y1,480,y2)
     if i/501>0.5: save_name = training_set_dir+name+'.jpg'
     else: save_name = testing_set_dir+name+'.jpg'
