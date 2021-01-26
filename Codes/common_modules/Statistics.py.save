@@ -3,25 +3,37 @@ import math
 
 def find_angle_from_coord(coordinates_list,IScrosswalk_list):
     """
-    Find the crosswalk angle to the vertical. Inputs: List of crosswalk coordinates, List of crosswalk coordinates considered (IScrosswalk variable)
+    Find crosswalk inclination. Inputs: Coordinates list, IScrosswalk values
     """
     thetas = []
     for coordinates,IScrw in zip(coordinates_list,IScrosswalk_list):
-        if IScrw:
-            theta_x = math.atan((coordinates[3]-coordinates[1])/(coordinates[0]-coordinates[2]))*180/3.14159
-            if coordinates[0]>coordinates[2]: thetas.append(90-theta_x)
-            else: thetas.append((90+theta_x)*-1)
+        if IScrw: thetas.append(math.atan2(coordinates[3]-coordinates[1],coordinates[0]-coordinates[2])*180/3.14159)
     return thetas
 
 
 def find_crosswalk_len(coordinates_list,IScrosswalk_list):
+    """
+    Find crosswalk length. Inputs: Coordinates list, IScrosswalk values
+    """
     len_arr = []
     for coordinates,IScrw in zip(coordinates_list,IScrosswalk_list):
         if IScrw: len_arr.append(float(((coordinates[3]-coordinates[1])**2+(coordinates[0]-coordinates[2])**2)**(1/2)))
     return len_arr
 
 
-def mean_distance(Mcoord,Tcoord,Tcrw):
+def distance(Mcoord,Tcoord,Tcrw):
+    """
+    Calculate the mean and STD values of the distance between the ground-truth and the predicted crosswalk coordinates. Inputs: Model coordinates, Ground-truth coordinates, IScrosswalk values. Outputs: start-point distance, start-point STD, endpoint distadef accuracy(confusion_matrix):
+    correct_pred = sum(confusion_matrix[i][i] for i in range(len(confusion_matrix)))
+    return correct_pred/sum(sum(x) for x in confusion_matrix)
+
+
+def overall_accuracy(Mi,Ti,Ml,Tl):
+    correct_pred = 0
+    for mi,ti,ml,tl in zip(Mi,Ti,Ml,Tl):
+        if round(float(mi)) == int(ti) and round(float(ml)) == int(tl): correct_pred += 1
+    return correct_pred/len(Ti)nce, endpoint STD.
+    """
     start_vec,end_vec = [],[]
     for [Mx1,My1,Mx2,My2],[Tx1,Ty1,Tx2,Ty2],IScrw in zip(Mcoord,Tcoord,Tcrw):
         if IScrw != 0:
