@@ -7,35 +7,33 @@ import Dataset
 import Statistics
 
 home_dir = os.path.expanduser('~')
-sys.path.append(home_dir + 'Path to: /Codes/CNNs/EfficientNet')
-sys.path.append(home_dir + 'Path to: /Codes/CNNs/LytNetV2')
-sys.path.append(home_dir + 'Path to: /Codes/CNNs/ResNet')
-sys.path.append(home_dir + 'Path to: /Codes/CNNs/MixNet')
+sys.path.append(home_dir + 'Path to: /Codes/CNNs/EfficientNet-M')
+sys.path.append(home_dir + 'Path to: /Codes/CNNs/LytNetV2-M')
+sys.path.append(home_dir + 'Path to: /Codes/CNNs/ResNet-M')
 
-import EfficientNet
-import my_lytnetV2
-import ResNet50
-import MixNet
+import EfficientNet_M
+import LytnetV2_M
+import ResNet50_M
 
 # Parameters
 batch_size = 8
 images_size = [768,576]
-models_list = {'ResNet' : 1, # 1 -> Use this model, 0 -> Don't use it
-               'LytNet' : 1,
-               'EffNet2': 1,
-               'EffNet1': 1,
-               'EffNet0': 1
+models_list = {'ResNet-M' : 1, # 1 -> Use this model, 0 -> Don't use it
+               'LytNet-M' : 1,
+               'EffNet-M2': 1,
+               'EffNet-M1': 1,
+               'EffNet-M0': 1
                }
 
 # Paths
-PTL_train_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL Dataset/PTLR_training.csv'                    # Lytnet Dataset Training Annotations
-PTL_train_img_path = home_dir + 'Path to: /Datasets/Images/PTL_Dataset_876x657/'                                  # Lytnet Dataset Training Images
+PTL_train_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL Dataset/PTLR_training.csv'                    # PTL Dataset Training Annotations
+PTL_train_img_path = home_dir + 'Path to: /Datasets/Images/PTL Dataset/PTL_Dataset_876x657/'                      # PTL Dataset Training Images
 
-PTL_valid_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL_Dataset/PTLR_validation.csv'                  # Lytnet Dataset Validation Annotations
-PTL_valid_img_path = home_dir + 'Path to: /Datasets/Images/PTL_Dataset_768x576/'                                  # Lytnet Dataset Validation Images
+PTL_valid_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL_Dataset/PTLR_validation.csv'                  # PTL Dataset Validation Annotations
+PTL_valid_img_path = home_dir + 'Path to: /Datasets/Images/PTL Dataset/PTL_Dataset_768x576/'                                  # PTL Dataset Validation Images
 
-PTL_tests_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL_Dataset/testing_file.csv'                     # Lytnet Dataset Testing Annotations
-PTL_tests_img_path = home_dir + 'Path to: /Datasets/Images/PTL_Dataset_768x576/'                                  # Lytnet Dataset Testing Images
+PTL_tests_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL_Dataset/testing_file.csv'                     # PTL Dataset Testing Annotations
+PTL_tests_img_path = home_dir + 'Path to: /Datasets/Images/PTL Dataset/PTL_Dataset_768x576/'                                  # PTL Dataset Testing Images
 
 PTL_Crosswalk_img_path = home_dir + 'Path to: /Datasets/Images/PTL-Crosswalk Dataset/'                            # PTL-Crosswalk Dataset Images
 
@@ -43,11 +41,11 @@ PTL_Crosswalk_train_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL-Cr
 PTL_Crosswalk_valid_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL-Crosswalk Dataset/validation.csv'   # PTL-Crosswalk Dataset Validation Annotaions
 PTL_Crosswalk_tests_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL-Crosswalk Dataset/testing.csv'      # PTL-Crosswalk Dataset Testing Annotaions
 
-ResNet_StateDict  = 'Path to: /Codes/CNNs/ResNet/my_model.pth'          # ResNet50-M state-dict path
-LytNet_StateDict  = 'Path to: /Codes/CNNs/LytNetV2/my_model.pth'        # LytnetV2-M state-dict path
-EffNet0_StateDict = 'Path to: /Codes/CNNs/EfficientNet/B0/my_model.pth' # EfficientNet-M B0 state-dict path
-EffNet1_StateDict = 'Path to: /Codes/CNNs/EfficientNet/B1/my_model.pth' # EfficientNet-M B1 state-dict path
-EffNet2_StateDict = 'Path to: /Codes/CNNs/EfficientNet/B2/my_model.pth' # EfficientNet-M B2 state-dict path
+ResNet_StateDict  = 'Path to: /Codes/CNNs/ResNet50-M/state_dict.pth'        # ResNet50-M state-dict path
+LytNet_StateDict  = 'Path to: /Codes/CNNs/LytNetV2-M/state_dict.pth'        # LytnetV2-M state-dict path
+EffNet0_StateDict = 'Path to: /Codes/CNNs/EfficientNet-M/B0/state_dict.pth' # EfficientNet-M B0 state-dict path
+EffNet1_StateDict = 'Path to: /Codes/CNNs/EfficientNet-M/B1/state_dict.pth' # EfficientNet-M B1 state-dict path
+EffNet2_StateDict = 'Path to: /Codes/CNNs/EfficientNet-M/B2/state_dict.pth' # EfficientNet-M B2 state-dict path
 
 # --------------------------------- Facilitate dataset choice ---------------------------------
 dataset_dict = {'train':{'PTL':{'img_path':PTL_train_img_path,    'ann_path':PTL_train_ann_path},
@@ -55,7 +53,7 @@ dataset_dict = {'train':{'PTL':{'img_path':PTL_train_img_path,    'ann_path':PTL
                 'valid':{'PTL':{'img_path':PTL_valid_img_path,    'ann_path':PTL_valid_ann_path},
                'PTL-Crosswalk':{'img_path':PTL_Crosswalk_img_path,'ann_path':PTL_Crosswalk_valid_ann_path}},
                 'tests':{'PTL':{'img_path':PTL_tests_img_path,    'ann_path':PTL_tests_ann_path},
-               'PTL-Crosswalk':{'img_path':PTL_Crosswalk_img_path,'ann_path':PTL_Crosswalk_valid_ann_path}}}
+               'PTL-Crosswalk':{'img_path':PTL_Crosswalk_img_path,'ann_path':PTL_Crosswalk_tests_ann_path}}}
 
 def get_dataset_array(Type,Sources):
     global dataset_dict
@@ -80,31 +78,31 @@ if __name__ == '__main__':
     # Models and state-dicts
     ResNet, LytNet,EffNet0,EffNet1,EffNet2 = [None,None,None,None,None]
     using_models, names = [],[]
-    if models_list['EffNet2']:
-        EffNet2 = EfficientNet.MakeModel('efficientnet_b2').cuda()
+    if models_list['EffNet-M2']:
+        EffNet2 = EfficientNet_M.MakeModel('efficientnet_b2').cuda()
         EffNet2.load_state_dict(torch.load(EffNet2_StateDict))
         using_models.append(EffNet2.eval())
-        names.append('EfficientNet B2')
-    if models_list['EffNet1']:
-        EffNet1 = EfficientNet.MakeModel('efficientnet_b1').cuda()
+        names.append('EfficientNet-M B2')
+    if models_list['EffNet-M1']:
+        EffNet1 = EfficientNet_M.MakeModel('efficientnet_b1').cuda()
         EffNet1.load_state_dict(torch.load(EffNet1_StateDict))
         using_models.append(EffNet1.eval())
-        names.append('EfficientNet B1')
-    if models_list['EffNet0']:
-        EffNet0 = EfficientNet.MakeModel('efficientnet_b0').cuda()
+        names.append('EfficientNet-M B1')
+    if models_list['EffNet-M0']:
+        EffNet0 = EfficientNet_M.MakeModel('efficientnet_b0').cuda()
         EffNet0.load_state_dict(torch.load(EffNet0_StateDict))
         using_models.append(EffNet0.eval())
-        names.append('EfficientNet B0')
-    if models_list['LytNet']:
-        LytNet = my_lytnetV2.MakeModel().cuda()
+        names.append('EfficientNet-M B0')
+    if models_list['LytNet-M']:
+        LytNet = LytnetV2_M.MakeModel().cuda()
         LytNet.load_state_dict(torch.load(LytNet_StateDict))
         using_models.append(LytNet.eval())
-        names.append('LytNet V2')
-    if models_list['ResNet']:
-        ResNet = ResNet50.MakeModel().cuda()
+        names.append('LytNetV2-M')
+    if models_list['ResNet-M']:
+        ResNet = ResNet50_M.MakeModel().cuda()
         ResNet.load_state_dict(torch.load(ResNet_StateDict))
         using_models.append(ResNet.eval())
-        names.append('ResNet 50')
+        names.append('ResNet50-M')
 
     # Measures
     Mi = {} # Model IScrosswalk variable
@@ -153,9 +151,9 @@ if __name__ == '__main__':
     # Statistics Calc.
     for N,model in enumerate(using_models,0):
         # Start-point And End-point Error
-        start_error,end_error = Statistics.EQM(Mc[str(N)],Tc,Ti)
+        start_error,start_STD,end_error,end_STD = Statistics.mean_distance(Mc[str(N)],Tc,Ti)
         print('\n\n\n\033[1mModel: '+names[N]+'\033[0m')
-        print(f'Start Error: {start_error:.4f}, End Error: {end_error:.4f}',end='\n\n')
+        print(f'Start Error: {start_error:.4f} - STD: {start_STD:.4f}, End Error: {end_error:.4f} - STD: {end_STD:.4f}',end='\n\n')
 
         # IScrosswalk Variable: Precision, Recall, And Confusion Matrix
         IScrw_confusion_matrix= Statistics.confusion_matrix(Mi[str(N)],Ti,n_classes=2)
@@ -170,4 +168,8 @@ if __name__ == '__main__':
         print(f'Light-Class Precision: {LClass_precision[0]:.2f}, {LClass_precision[1]:.2f}, {LClass_precision[2]:.2f}, ',end='')
         print(f'Light-Class Recall: {LClass_recall[0]:.2f}, {LClass_recall[1]:.2f}, {LClass_recall[2]:.2f}')
         print('Light-Class Confusion Matrix:')
-        print(LClass_confusion_matrix.numpy())
+        print(LClass_confusion_matrix.numpy(),end='\n\n')
+        
+        # Multi-Class Accuracy
+        Accuracy = Statistics.overall_accuracy(Mi[str(N)],Ti,Ml[str(N)],Tl)
+        print(f'Multi-Class Accuracy: {Accuracy:.2f}')
