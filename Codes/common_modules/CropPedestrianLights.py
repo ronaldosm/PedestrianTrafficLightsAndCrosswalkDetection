@@ -2,9 +2,9 @@ import glob
 import random
 from PIL import Image
 
-original_images_dir = 'Path to: /pedestrianlights/download/pedestrianlights_large/'
-original_ann_dir = 'Path to: /pedestrianlights/download/pedestrianlights_large/groundtruth_large.txt'
-cropped_images_dir = 'Path to: /Datasets/Images/PTL-Crosswalk Dataset/pedestrianlights_large/'
+original_images_dir = 'Path to: /pedestrianlights/download/pedestrianlights_large/'                      # Extracted pedestrianlights_large folder
+original_ann_dir = 'Path to: /pedestrianlights/download/pedestrianlights_large/groundtruth_large.txt'    # Extracted pedestrianlights_large folder/groundtruth_large.txt
+cropped_images_dir = 'Path to: /Datasets/Images/PTL-Crosswalk Dataset/pedestrianlights_large/'           # Cropped images dir
 
 with open(original_ann_dir,'r') as File:
     original_ann = File.readlines()

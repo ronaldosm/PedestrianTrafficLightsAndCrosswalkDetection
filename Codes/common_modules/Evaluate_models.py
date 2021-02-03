@@ -29,11 +29,11 @@ models_list = {'ResNet-M' : 1, # 1 -> Use this model, 0 -> Don't use it
 PTL_train_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL Dataset/PTLR_training.csv'                    # PTL Dataset Training Annotations
 PTL_train_img_path = home_dir + 'Path to: /Datasets/Images/PTL Dataset/PTL_Dataset_876x657/'                      # PTL Dataset Training Images
 
-PTL_valid_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL_Dataset/PTLR_validation.csv'                  # PTL Dataset Validation Annotations
-PTL_valid_img_path = home_dir + 'Path to: /Datasets/Images/PTL Dataset/PTL_Dataset_768x576/'                                  # PTL Dataset Validation Images
+PTL_valid_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL Dataset/PTLR_validation.csv'                  # PTL Dataset Validation Annotations
+PTL_valid_img_path = home_dir + 'Path to: /Datasets/Images/PTL Dataset/PTL_Dataset_768x576/'                      # PTL Dataset Validation Images
 
-PTL_tests_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL_Dataset/testing_file.csv'                     # PTL Dataset Testing Annotations
-PTL_tests_img_path = home_dir + 'Path to: /Datasets/Images/PTL Dataset/PTL_Dataset_768x576/'                                  # PTL Dataset Testing Images
+PTL_tests_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL Dataset/testing_file.csv'                     # PTL Dataset Testing Annotations
+PTL_tests_img_path = home_dir + 'Path to: /Datasets/Images/PTL Dataset/PTL_Dataset_768x576/'                      # PTL Dataset Testing Images
 
 PTL_Crosswalk_img_path = home_dir + 'Path to: /Datasets/Images/PTL-Crosswalk Dataset/'                            # PTL-Crosswalk Dataset Images
 
@@ -169,7 +169,7 @@ if __name__ == '__main__':
         print(f'Light-Class Recall: {LClass_recall[0]:.2f}, {LClass_recall[1]:.2f}, {LClass_recall[2]:.2f}')
         print('Light-Class Confusion Matrix:')
         print(LClass_confusion_matrix.numpy(),end='\n\n')
-        
+
         # Multi-Class Accuracy
         Accuracy = Statistics.overall_accuracy(Mi[str(N)],Ti,Ml[str(N)],Tl)
         print(f'Multi-Class Accuracy: {Accuracy:.2f}')
