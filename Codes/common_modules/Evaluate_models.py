@@ -9,7 +9,7 @@ import Statistics
 home_dir = os.path.expanduser('~')
 sys.path.append(home_dir + 'Path to: /Codes/CNNs/EfficientNet-M')
 sys.path.append(home_dir + 'Path to: /Codes/CNNs/LytNetV2-M')
-sys.path.append(home_dir + 'Path to: /Codes/CNNs/ResNet-M')
+sys.path.append(home_dir + 'Path to: /Codes/CNNs/ResNet50-M')
 
 import EfficientNet_M
 import LytnetV2_M
@@ -41,11 +41,11 @@ PTL_Crosswalk_train_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL-Cr
 PTL_Crosswalk_valid_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL-Crosswalk Dataset/validation.csv'   # PTL-Crosswalk Dataset Validation Annotaions
 PTL_Crosswalk_tests_ann_path = home_dir + 'Path to: /Datasets/Annotations/PTL-Crosswalk Dataset/testing.csv'      # PTL-Crosswalk Dataset Testing Annotaions
 
-ResNet_StateDict  = 'Path to: /Codes/CNNs/ResNet50-M/state_dict.pth'        # ResNet50-M state-dict path
-LytNet_StateDict  = 'Path to: /Codes/CNNs/LytNetV2-M/state_dict.pth'        # LytnetV2-M state-dict path
-EffNet0_StateDict = 'Path to: /Codes/CNNs/EfficientNet-M/B0/state_dict.pth' # EfficientNet-M B0 state-dict path
-EffNet1_StateDict = 'Path to: /Codes/CNNs/EfficientNet-M/B1/state_dict.pth' # EfficientNet-M B1 state-dict path
-EffNet2_StateDict = 'Path to: /Codes/CNNs/EfficientNet-M/B2/state_dict.pth' # EfficientNet-M B2 state-dict path
+ResNet_StateDict  = home_dir + 'Path to: /Codes/CNNs/ResNet50-M/state_dict.pth'        # ResNet50-M state-dict path
+LytNet_StateDict  = home_dir + 'Path to: /Codes/CNNs/LytNetV2-M/state_dict.pth'        # LytnetV2-M state-dict path
+EffNet0_StateDict = home_dir + 'Path to: /Codes/CNNs/EfficientNet-M/B0/state_dict.pth' # EfficientNet-M B0 state-dict path
+EffNet1_StateDict = home_dir + 'Path to: /Codes/CNNs/EfficientNet-M/B1/state_dict.pth' # EfficientNet-M B1 state-dict path
+EffNet2_StateDict = home_dir + 'Path to: /Codes/CNNs/EfficientNet-M/B2/state_dict.pth' # EfficientNet-M B2 state-dict path
 
 # --------------------------------- Facilitate dataset choice ---------------------------------
 dataset_dict = {'train':{'PTL':{'img_path':PTL_train_img_path,    'ann_path':PTL_train_ann_path},
@@ -94,7 +94,7 @@ if __name__ == '__main__':
         using_models.append(EffNet0.eval())
         names.append('EfficientNet-M B0')
     if models_list['LytNet-M']:
-        LytNet = LytnetV2_M.MakeModel().cuda()
+        LytNet = LytnetV2_M.MakeModel(pretrained=False).cuda()
         LytNet.load_state_dict(torch.load(LytNet_StateDict))
         using_models.append(LytNet.eval())
         names.append('LytNetV2-M')
