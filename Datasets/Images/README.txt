@@ -1,6 +1,6 @@
 How to configure the datasets:
     PTL-Crosswalk Dataset:
-        Download the PTL-Crosswalk-Base subset from <my_url7531.com>. Extract the files. Put the < PTL-Crosswalk-Base > folder inside < /Datasets/Images/PTL-Crosswalk Dataset/ >.
+        Download the PTL-Crosswalk-Base subset from < https://dl.orangedox.com/3cLhxi >. Extract the files. Put the < PTL-Crosswalk-Base > folder inside < /Datasets/Images/PTL-Crosswalk Dataset/ >.
         Download the PTLR and Crosswalk subsets from < http://wangkaiwei.org/downloadeg.html >. Extract the files. Put the < PTLR dataset > and < crosswalk DATASET > folders inside < /Datasets/Images/PTL-Crosswalk Dataset/ >.
         Download the PedestrianLights subset from < https://www.uni-muenster.de/PRIA/en/forschung/index.shtml >. Extract the < pedestrianlights_large > folder. Run < /Codes/common_modules/CropPedestrianLights.py >, indicating the path to that folder, as well as the save_path of the cropped images. This save_path must be: < /Datasets/Images/PTL-Crosswalk Dataset/pedestrianlights_large/ >
     (Yu; Lee; Kim) PTL Dataset:
