@@ -14,7 +14,7 @@ import Loss
 # Parameters
 batch_size = 10
 max_epochs = 400
-learning_rate = 0.0001
+learning_rate = 0.1
 images_size = [768,576]
 load_state_dict = False
 pretrained=True
