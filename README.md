@@ -50,43 +50,43 @@ After the end of the training process with our proposed dataset, to further incr
 
 ### Results
 The tables below show the results obtained by each tested CNN architecture:
-|               | **CNN Model**   | **Red PTL**  | **Green PTL** | **No PTL**   | **CP**   |
-|  :---:        | :---:           | :---:        | :---:         | :---:        | :---:    |
-| **Precision** | EfficientNet B0 | **0.98**     | 0.98          | **0.94**     | **0.98** |
-|               | EfficientNet B1 | **0.98**     | **0.99**      | 0.93         | **0.98** |
-|               | EfficientNet B2 | **0.98**     | **0.99**      | 0.93         | **0.98** |
-|               | ResNet-50       | **0.98**     | **0.99**      | 0.91         | **0.98** |
-|               | LytNetV2        | 0.96         | 0.97          | 0.87         | 0.97     |
-|               |                 |              |               |              |          |
-| **Recall**    | EfficientNet B0 | **0.98**     | **0.95**      | **0.98**     | **0.99** |
-|               | EfficientNet B1 | 0.97         | **0.95**      | **0.98**     | **0.99** |
-|               | EfficientNet B2 | **0.98**     | **0.95**      | 0.97         | **0.99** |
-|               | ResNet-50       | 0.97         | 0.94	         | **0.98**     | **0.99** |
-|               | LytNetV2        | 0.94         | 0.90	         | 0.96         | 0.98     |
-|               |                 |              |               |              |          |
-| **F1 Score**  | EfficientNet B0 | **0.98**     | 0.96          | **0.96**     | **0.99** |
-|               | EfficientNet B1 | 0.97         | **0.97**      | 0.95         | **0.99** |
-|               | EfficientNet B2 | **0.98**     | **0.97**      | 0.95         | 0.98     |
-|               | ResNet-50       | 0.94         | 0.96	         | 0.94         | **0.99** |
-|               | LytNetV2        | 0.97         | 0.93	         | 0.91         | 0.97     |
+|               | **CNN Model**     | **Red PTL**   | **Green PTL** | **No PTL**   | **CP**    |
+|  :---:        | :---:             | :---:         | :---:         | :---:        | :---:     |
+| **Precision** | EfficientNet-M B0 | **0.979**     |   0.984       | **0.943**    |   0.977   |
+|               | EfficientNet-M B1 |   0.976       |   0.988       |   0.929      | **0.986** |
+|               | EfficientNet-M B2 |   0.977       |   0.986       |   0.935      |   0.984   |
+|               | LytNetV2-M        |   0.966       |   0.976       |   0.868      |   0.973   |
+|               | ResNet-50-M       |   0.977       | **0.992**     |   0.915      |   0.985   |
+|               |                   |               |               |              |           |
+| **Recall**    | EfficientNet-M B0 |   0.976       | **0.954**     | **0.982**    |   0.993   |
+|               | EfficientNet-M B1 |   0.971       |   0.952       |   0.977      | **0.995** |
+|               | EfficientNet-M B2 | **0.980**     |   0.950       |   0.971      |   0.992   |
+|               | LytNetV2-M        |   0.947       |   0.902	      |   0.964      |   0.980   |
+|               | ResNet-50-M       |   0.968       |   0.946	      |   0.980      |   0.994   |
+|               |                   |               |               |              |           |
+| **F1 Score**  | EfficientNet-M B0 |   0.977       |   0.969       | **0.962**    | **0.980** |
+|               | EfficientNet-M B1 |   0.973       | **0.970**     |   0.952      | **0.990** |
+|               | EfficientNet-M B2 | **0.978**     |   0.968       |   0.953      |   0.988   |
+|               | LytNetV2-M        |   0.956       |   0.937	      |   0.913      | **0.976** |
+|               | ResNet-50-M       |   0.972       |   0.968	      |   0.946      |   0.989   |
 
 **CP denotes the crosswalk presence indication variable**
 
 | **CNN Model**   | **Multi-Class Accuracy (CP + PTL Class)** |
 | :---:           | :---:                                     |
-| EfficientNet B0 | **0.95**                                  |
-| EfficientNet B1 | **0.95**                                  |
-| EfficientNet B2 | **0.95**                                  |
-| ResNet-50       | 0.94	                                  |
-| LytNetV2        | 0.90	                                  |
+| EfficientNet B0 |   0.950                                   |
+| EfficientNet B1 | **0.953**                                 |
+| EfficientNet B2 | **0.953**                                 |
+| ResNet-50       |   0.904	                                  |
+| LytNetV2        |   0.945	                                  |
 
 | **CNN Model**   | **Start point error {STD}** | **Endpoint error {STD}** |
 | :---:           | :---:                       | :---:                    |
 | EfficientNet B0 | 0.0851 {0.0651}             | 0.1031 {0.0821}          |
 | EfficientNet B1 | **0.0725 {0.0616}**         | **0.0916 {0.0738}**      |
 | EfficientNet B2 | 0.0830 {0.0648}             | 0.0954 {0.0785}          |
-| ResNet-50       | 0.0970 {0.0780}             | 0.1187 {0.0990}          |
 | LytNetV2        | 0.0787 {0.0749}             | 0.1098 {0.0983}          |
+| ResNet-50       | 0.0970 {0.0780}             | 0.1187 {0.0990}          |
 
 ### Credits
 1. Ruiqi Cheng. 2018. Image Data Sets.   http://wangkaiwei.org/downloadeg.html
