@@ -1,4 +1,4 @@
-# Crosswalks And Pedestrian Traffic Lights Identification
+# Pedestrian Traffic Lights And Crosswalk Identification
 
 ### Introduction
 This repository hosts a project that consists of the training and evaluation of state-of-the-art convolutional neural network (CNN) architectures for the real-time identification of the presence and coordinates of zebra crosswalks and the state of pedestrian traffic lights (PTL), with the use of a new large and culturally diverse image dataset. Paper link: https://link.springer.com/article/10.1007/s11042-022-12222-6
