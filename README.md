@@ -18,7 +18,7 @@ For the second part, we attached three datasets available online to ours, as sho
 | Crosswalk Dataset          | Ruiqi Cheng        | China, Italy   | 833                | [Link](http://wangkaiwei.org/downloadeg.html) |
 | PTLR Dataset               | Ruiqi Cheng        | China, Italy   | 1135               | [Link](http://wangkaiwei.org/downloadeg.html) |
 | PedestrianLights - Large   | Jan Roters         | Germany        | 501                | [Link](https://www.uni-muenster.de/PRIA/en/forschung/index.shtml) |
-| PTL-Crosswalk Base Dataset | Ours, ADAPT Project| Brazil, France | 2711               | [Link](https://drive.google.com/file/d/1u3UNxh2f6E0EYr12xcHF0shezWXrExIr/view?usp=sharing) |
+| PTL-Crosswalk Base Dataset | Ours, ADAPT Project| Brazil, France | 2711               | [Link]([https://drive.google.com/file/d/1u3UNxh2f6E0EYr12xcHF0shezWXrExIr/view?usp=sharing](https://1drv.ms/f/c/ac5426c77d3b6a62/ElwZ_7ElwzxDv8V8zd7daCQBfp91XE85Rd86yMl1ctgo-w?e=1sfrqy)) |
 
 For all images, we manually generated and conferred new labels, composed of the following parts:
 * **image_file:** Path to the referred image;
